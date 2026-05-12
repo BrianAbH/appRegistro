@@ -17,4 +17,10 @@
 
     <string name="titulo_boton_modificar">Modificar</string>
     <string name="titulo_boton_eliminar">Eliminar</string>
+
+    <string name="titulo_dialog">Confirmar Eliminación</string>
+    <string name="mensaje_dialog">Estas seguro que quiere eliminar este producto</string>
+    <string name="confirmacion_dialog">Si</string>
+    <string name="negacion_dialog">No</string>
+    <string name="msj_toastD">Producto Eliminado</string>
 </resources>

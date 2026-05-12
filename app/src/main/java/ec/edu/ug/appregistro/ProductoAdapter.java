@@ -78,9 +78,9 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
                 databaseHandler db = new databaseHandler(context);
 
-                new AlertDialog.Builder(context).setTitle("Confirmar Eliminación")
-                        .setMessage("Estas seguro que quiere eliminar este producto")
-                        .setPositiveButton("Si", (dialog, which) -> {
+                new AlertDialog.Builder(context).setTitle(R.string.titulo_dialog)
+                        .setMessage(R.string.mensaje_dialog)
+                        .setPositiveButton(R.string.confirmacion_dialog, (dialog, which) -> {
                             int position = getAdapterPosition();
                             db.deleteProducto(lista.get(position).getId());
                             lista.remove(position);
@@ -88,9 +88,11 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
                             notifyItemRemoved(position);
 
                             notifyItemRangeChanged(position, lista.size());
+                            Toast.makeText(context,R.string.msj_toastD,Toast.LENGTH_SHORT).show();
                         })
-                        .setNegativeButton("No", null)
+                        .setNegativeButton(R.string.negacion_dialog, null)
                         .show();
+
             });
 
         }
