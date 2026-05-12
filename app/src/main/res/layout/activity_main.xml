@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Registro de Productos"
+                android:text="@string/header_titulo"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:text="Manejo de las sentencias select,insert,update y delete"/>
+                android:text="@string/header_sub"/>
         </LinearLayout>
 
         <LinearLayout
@@ -47,12 +47,12 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Nombre:"/>
+                android:text="@string/label_nombre"/>
             <EditText
                 android:id="@+id/etNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre del producto"/>
+                android:hint="@string/hint_nombre"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,12 +60,12 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20sp"
-                android:text="Precio"/>
+                android:text="@string/label_precio"/>
             <EditText
                 android:id="@+id/etPrecio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Precio del producto"/>
+                android:hint="@string/hint_precio"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,12 +73,13 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20sp"
-                android:text="Stock"/>
+                android:text="@string/label_stock"/>
+
             <EditText
                 android:id="@+id/etStock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Stock del producto"/>
+                android:hint="@string/hint_stock"/>
 
             <Button
                 android:id="@+id/btnGuardar"
@@ -86,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="guardar Producto"/>
+                android:text="@string/titulo_botonG"/>
 
         </LinearLayout>
 
@@ -100,15 +101,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lista de Productos"/>
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="@string/lista_titulo"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerProductos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </LinearLayout>
-
-
 
     </LinearLayout>
 

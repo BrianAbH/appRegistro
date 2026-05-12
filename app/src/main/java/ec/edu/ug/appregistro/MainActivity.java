@@ -52,9 +52,6 @@ public class MainActivity extends AppCompatActivity {
             mostrarProductos();
         });
 
-        eliminarProducto();
-
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -84,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
             etPrecio.setError("Este campo no puede quedar vacio");
             etStock.setError("Este campo no puede quedar vacio");
         }else{
-            dbHelper.addProducto(new productos(etNombre.getText().toString(),
+            dbHelper.addProducto(
+                    new productos(etNombre.getText().toString(),
                     Integer.parseInt(etPrecio.getText().toString()),
                     Integer.parseInt(etStock.getText().toString())));
             Toast.makeText(this,"Producto Guardado", Toast.LENGTH_SHORT).show();
@@ -96,9 +94,5 @@ public class MainActivity extends AppCompatActivity {
         etNombre.setText("");
         etPrecio.setText("");
         etStock.setText("");
-    }
-
-    private void eliminarProducto(){
-
     }
 }

@@ -65,6 +65,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
             stock = itemView.findViewById(R.id.txtStock);
             btnModificar = itemView.findViewById(R.id.btnModificar);
             btnEliminar = itemView.findViewById(R.id.btnEliminar);
+
             btnModificar.setOnClickListener(v->{
                 context = itemView.getContext();
                 Intent iModificar = new Intent(context, Modificar.class);

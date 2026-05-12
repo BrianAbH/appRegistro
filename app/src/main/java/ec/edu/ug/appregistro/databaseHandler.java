@@ -80,14 +80,11 @@ public class databaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
-            do {
-                producto.setId(cursor.getInt(0));
-                producto.setNombre(cursor.getString(1));
-                producto.setPrecio(cursor.getInt(2));
-                producto.setStock(cursor.getInt(3));
-            } while (cursor.moveToNext());
+            producto.setId(cursor.getInt(0));
+            producto.setNombre(cursor.getString(1));
+            producto.setPrecio(cursor.getInt(2));
+            producto.setStock(cursor.getInt(3));
         }
-
         return producto;
     }
 
@@ -95,7 +92,8 @@ public class databaseHandler extends SQLiteOpenHelper {
         boolean estado;
         SQLiteDatabase db = this.getWritableDatabase();
         try{
-            String updateQuery = "UPDATE " + TABLE_PRODUCTOS + " SET nombre_producto = '" + nombre + "', precio_producto = '" + precio + "', stock_producto = '" + stock
+            String updateQuery = "UPDATE " + TABLE_PRODUCTOS + " SET nombre_producto = '" + nombre +
+                    "', precio_producto = '" + precio + "', stock_producto = '" + stock
                     +   "' WHERE id_producto = "+ id +" ";
             db.execSQL(updateQuery);
             estado = true;

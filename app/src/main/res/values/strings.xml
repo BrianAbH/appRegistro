@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">appRegistro</string>
+    <string name="lista_titulo">Lista de Productos</string>
 
-    <string name="txt_id">id: %1$s</string>
+    <string name="header_titulo">Registro de Productos</string>
+    <string name="header_sub">Manejo de las sentencias select,insert,update y delete</string>
+
+    <string name="label_nombre">Nombre:</string>
+    <string name="hint_nombre">Nombre del producto</string>
+
+    <string name="label_precio">Precio:</string>
+    <string name="hint_precio">Precio del producto</string>
+
+    <string name="label_stock">Stock:</string>
+    <string name="hint_stock">Stock del producto</string>
+    <string name="titulo_botonG">Guardar Producto</string>
+
+    <string name="titulo_boton_modificar">Modificar</string>
+    <string name="titulo_boton_eliminar">Eliminar</string>
 </resources>
