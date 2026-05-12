@@ -5,8 +5,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class Modificar extends AppCompatActivity {
 
@@ -20,6 +24,7 @@ public class Modificar extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.modificar_activity);
+        EdgeToEdge.enable(this);
         db = new databaseHandler(Modificar.this);
         int id = getIntent().getIntExtra("ID",0);
 
@@ -32,6 +37,11 @@ public class Modificar extends AppCompatActivity {
         llenarCampos();
         btnUpdate.setOnClickListener(v->actualizarProducto());
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.modificar), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
     }
 
     private void llenarCampos(){
