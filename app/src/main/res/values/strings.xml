@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">appRegistro</string>
+
+    <string name="txt_id">id: %1$s</string>
+</resources>
