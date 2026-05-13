@@ -1,7 +1,6 @@
-package ec.edu.ug.appregistro;
+package ec.edu.ug.appregistro.adaptadores;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;
+import java.util.Date;
+
+import ec.edu.ug.appregistro.MainActivity;
+import ec.edu.ug.appregistro.Modificar;
+import ec.edu.ug.appregistro.R;
+import ec.edu.ug.appregistro.db.databaseHandler;
+import ec.edu.ug.appregistro.clasesDb.productos;
 
 public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> {
 
@@ -54,7 +60,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView id,nombre, precio,stock;
-        Button btnModificar, btnEliminar;
+        Button btnModificar, btnEliminar, btnVender;
         Context context;
 
         public ViewHolder(@NonNull View itemView) {
@@ -65,6 +71,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
             stock = itemView.findViewById(R.id.txtStock);
             btnModificar = itemView.findViewById(R.id.btnModificar);
             btnEliminar = itemView.findViewById(R.id.btnEliminar);
+            btnVender = itemView.findViewById(R.id.btnVender);
 
             btnModificar.setOnClickListener(v->{
                 context = itemView.getContext();
@@ -95,6 +102,21 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
             });
 
+            btnVender.setOnClickListener(v->{
+                context = itemView.getContext();
+                Date date = new Date();
+                databaseHandler db = new databaseHandler(context);
+                int id = lista.get(getAdapterPosition()).getId();
+                String nombre = lista.get(getAdapterPosition()).getNombre();
+                String fecha = date.toString();
+                db.venderProducto(id, nombre,fecha);
+                lista.clear();
+                lista.addAll(db.getallProductList());
+                notifyDataSetChanged();
+                if(context instanceof MainActivity){
+                    ((MainActivity) context).cargarMovimiento();
+                }
+            });
         }
     }
 }

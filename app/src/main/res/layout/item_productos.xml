@@ -35,13 +35,21 @@
         <Button
             android:id="@+id/btnModificar"
             android:layout_width="wrap_content"
+            android:backgroundTint="@color/black"
             android:layout_height="wrap_content"
             android:text="@string/titulo_boton_modificar"/>
         <Button
             android:id="@+id/btnEliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/danger"
             android:text="@string/titulo_boton_eliminar"/>
+
+        <Button
+            android:id="@+id/btnVender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/ug_blue_dark"
+            android:text="@string/btn_vender"/>
     </LinearLayout>
 </LinearLayout>

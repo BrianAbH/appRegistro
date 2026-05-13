@@ -1,4 +1,4 @@
-package ec.edu.ug.appregistro;
+package ec.edu.ug.appregistro.clasesDb;
 
 public class productos {
     private int id_producto;

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">appRegistro</string>
     <string name="lista_titulo">Lista de Productos</string>
+    <string name="lista_movimiento_titulo">Lista de Movimientos</string>
 
     <string name="header_titulo">Registro de Productos</string>
     <string name="header_sub">Manejo de las sentencias select,insert,update y delete</string>
@@ -17,6 +18,7 @@
 
     <string name="titulo_boton_modificar">Modificar</string>
     <string name="titulo_boton_eliminar">Eliminar</string>
+    <string name="btn_vender">Vender</string>
 
     <string name="titulo_dialog">Confirmar Eliminación</string>
     <string name="mensaje_dialog">Estas seguro que quiere eliminar este producto</string>

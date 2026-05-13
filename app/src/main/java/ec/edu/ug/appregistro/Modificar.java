@@ -12,6 +12,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import ec.edu.ug.appregistro.clasesDb.productos;
+import ec.edu.ug.appregistro.db.databaseHandler;
+
 public class Modificar extends AppCompatActivity {
 
     private productos pr;

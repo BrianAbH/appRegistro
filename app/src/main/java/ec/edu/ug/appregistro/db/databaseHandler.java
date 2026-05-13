@@ -1,21 +1,25 @@
-package ec.edu.ug.appregistro;
+package ec.edu.ug.appregistro.db;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import ec.edu.ug.appregistro.clasesDb.Movimientos;
+import ec.edu.ug.appregistro.clasesDb.productos;
 
 public class databaseHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "DbProductos.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String TABLE_PRODUCTOS = "productos";
+    private static final String TABLE_MOVIMIENTOS = "movimientos";
 
 
     public databaseHandler(Context context) {
@@ -30,16 +34,22 @@ public class databaseHandler extends SQLiteOpenHelper {
                 + "nombre_producto TEXT, "
                 + "precio_producto TEXT,"
                 + "stock_producto TEXT)";
+        String createTableMovimientos = "CREATE TABLE " + TABLE_MOVIMIENTOS + "("
+                + "id_movimiento INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "nombre_producto TEXT, "
+                + "fecha TEXT)";
         db.execSQL(createTableProducto);
+        db.execSQL(createTableMovimientos);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCTOS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MOVIMIENTOS);
         onCreate(db);
     }
 
-    void addProducto(productos productos) {
+    public void addProducto(productos productos) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -53,7 +63,7 @@ public class databaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<productos> getallProductList() {
         ArrayList<productos> listaProductos = new ArrayList<productos>();
-        String selectQuery = "SELECT * FROM " + TABLE_PRODUCTOS;
+        String selectQuery = "SELECT * FROM " + TABLE_PRODUCTOS + " WHERE stock_producto > 0";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -125,6 +135,49 @@ public class databaseHandler extends SQLiteOpenHelper {
         return estado;
     }
 
+    public ArrayList<Movimientos> getAllMovimientos(){
+        ArrayList<Movimientos> listaMovimientos = new ArrayList<>();
+        String querySelect = "SELECT * FROM " + TABLE_MOVIMIENTOS;
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(querySelect,null);
+        if (cursor.moveToFirst()){
+            do {
+                Movimientos m = new Movimientos();
+                m.setIdMovimiento(Integer.parseInt(cursor.getString(0)));
+                m.setNombreMovimiento(cursor.getString(1));
+                m.setFechaMovimiento(cursor.getString(2));
+                listaMovimientos.add(m);
+            }while (cursor.moveToNext());
+        }
+        return listaMovimientos;
+    }
+
+
+    public void venderProducto(int id, String nombre, String fecha){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String updateQuery = "UPDATE productos SET stock_producto = stock_producto - 1 WHERE id_producto = " + id;
+
+        try{
+            db.beginTransaction();
+            db.execSQL(updateQuery);
+            ContentValues values = new ContentValues();
+
+            values.put("nombre_producto", nombre);
+            values.put("fecha", fecha);
+            db.insert(TABLE_MOVIMIENTOS, null, values);
+            Log.d("errorsec", "fff");
+            db.setTransactionSuccessful();
+        } catch (SQLException e) {
+            Log.d("Transaction", e.getMessage().toString());
+        }finally {
+            db.endTransaction();
+            db.close();
+        }
+
+    }
 
 
 }
