@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:id="@+id/modificar"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -18,7 +20,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:text="Modificar Datos"/>
+            android:text="@string/titulo_modificar"/>
     </LinearLayout>
 
 
@@ -38,14 +40,17 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:text="Nombre del Producto: "/>
+                android:text="@string/label_nombre"/>
 
             <EditText
                 android:id="@+id/nombre"
+                android:autofillHints=""
                 android:background="@drawable/bg_card"
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
 
         </LinearLayout>
 
@@ -59,14 +64,17 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:text="Precio del Producto: "/>
+                android:text="@string/label_precio"/>
 
             <EditText
                 android:id="@+id/precio"
+                android:autofillHints=""
                 android:background="@drawable/bg_card"
                 android:layout_marginTop="10dp"
+                android:inputType="number"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <LinearLayout
@@ -80,14 +88,17 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:text="Stock del Producto: "/>
+                android:text="@string/label_stock"/>
 
             <EditText
                 android:id="@+id/stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType="number"
                 android:background="@drawable/bg_card"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <Button
@@ -96,7 +107,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Actualizar Datos"/>
+            android:text="@string/titulo_boton_actualizar"/>
     </LinearLayout>
 
 

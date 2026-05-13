@@ -168,7 +168,6 @@ public class databaseHandler extends SQLiteOpenHelper {
             values.put("nombre_producto", nombre);
             values.put("fecha", fecha);
             db.insert(TABLE_MOVIMIENTOS, null, values);
-            Log.d("errorsec", "fff");
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             Log.d("Transaction", e.getMessage().toString());

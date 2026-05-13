@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnGuardar.setOnClickListener(v->{
             añadirProducto();
+            mostrarProductos();
         });
 
         mostrarMovimiento();

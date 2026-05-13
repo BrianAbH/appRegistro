@@ -6,13 +6,13 @@
     <string name="header_titulo">Registro de Productos</string>
     <string name="header_sub">Manejo de las sentencias select,insert,update y delete</string>
 
-    <string name="label_nombre">Nombre:</string>
+    <string name="label_nombre">Nombre del Producto:</string>
     <string name="hint_nombre">Nombre del producto</string>
 
-    <string name="label_precio">Precio:</string>
+    <string name="label_precio">Precio del Producto: </string>
     <string name="hint_precio">Precio del producto</string>
 
-    <string name="label_stock">Stock:</string>
+    <string name="label_stock">Stock del Producto: </string>
     <string name="hint_stock">Stock del producto</string>
     <string name="titulo_botonG">Guardar Producto</string>
 
@@ -25,4 +25,7 @@
     <string name="confirmacion_dialog">Si</string>
     <string name="negacion_dialog">No</string>
     <string name="msj_toastD">Producto Eliminado</string>
+
+    <string name="titulo_modificar">Modificar Datos</string>
+    <string name="titulo_boton_actualizar">Actualizar Datos</string>
 </resources>
